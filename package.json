@@ -1,0 +1,45 @@
+{
+  "name": "angular2-datetime",
+  "version": "0.1.0",
+  "description": "angular2 datetime picker",
+  "scripts": {
+    "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterlaraia/angular2-datetime.git"
+  },
+  "keywords": [
+    "angular2",
+    "datetime",
+    "picker",
+    "angular"
+  ],
+  "author": "Peter Laraia <PeterLaraiaGit@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peterlaraia/angular2-datetime/issues"
+  },
+  "homepage": "https://github.com/peterlaraia/angular2-datetime#readme",
+  "peerDependencies": {
+    "@angular/core": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^2.4.2",
+    "@angular/compiler": "^2.4.2",
+    "@angular/compiler-cli": "^2.4.2",
+    "@angular/core": "^2.4.2",
+    "@angular/platform-browser": "^2.4.2",
+    "@angular/platform-browser-dynamic": "^2.4.2",
+    "@types/node": "^7.0.0",
+    "codelyzer": "^2.0.0-beta.4",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.3",
+    "systemjs": "0.19.28",
+    "ts-node": "^2.0.0",
+    "tslib": "^1.5.0",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4",
+    "zone.js": "^0.7.4"
+  }
+}
