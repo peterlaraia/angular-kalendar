@@ -4,6 +4,7 @@ logs
 coverage
 
 node_modules
+demo-internal
 
 typings
 dist
