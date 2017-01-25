@@ -1,20 +1,19 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "es2015",
         "sourceMap": true,
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "stripInternal": true,
         "declaration": true,
         "outDir": "./dist",
         "lib": ["es2015", "dom"],
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "removeComments": true
     },
     "files": [
         "./src/angular2-datetime.module.ts"
-    ],
-    "angularCompilerOptions": {
-			"skipTemplateCodegen": true
-    }
+    ]
 }
