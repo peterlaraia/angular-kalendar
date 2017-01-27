@@ -8,7 +8,8 @@
     "transpile": "tsc -p tsconfig-esm.json",
     "package": "rollup -c rollup.config.js dist/angular2-datetime.module.js > dist/angular2-datetime.bundle.js",
     "finish": "cp package.json dist && ngc && cp README.md dist",
-    "build": "npm run distclean && npm run transpile && npm run package && npm run finish"
+    "build": "npm run distclean && npm run transpile && npm run package && npm run finish",
+    "build.demo": "rimraf demo-internal/dist && tsc -p tsconfig-demo.json"
   },
   "repository": {
     "type": "git",
