@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'datepicker',
-    templateUrl: 'datepicker.component.html'
+    template: `
+    <div>
+        DATEPICKER PLACEHOLDER
+    </div>
+    `
 })
 export class DatePickerComponent implements OnInit {
     constructor() { }
