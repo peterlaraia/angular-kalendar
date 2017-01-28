@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'datepicker',
+    selector: 'date-picker',
     template: `
-    <div>
-        DATEPICKER PLACEHOLDER
+    <div class="date-picker">
+        <date-picker-days [(date)]="date"></date-picker-days>
     </div>
     `
 })
-export class DatePickerComponent implements OnInit {
-    constructor() { }
-
-    ngOnInit() { }
+export class DatePickerComponent {
+    date = new Date();
 }

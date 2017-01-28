@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'timepicker',
+    selector: 'time-picker',
     template: `
     <div>
         TIMEPICKER PLACEHOLDER
