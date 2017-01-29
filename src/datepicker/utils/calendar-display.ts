@@ -12,5 +12,5 @@ export class CalendarDisplay {
         'October',
         'November',
         'December'
-    ]
+    ];
 }

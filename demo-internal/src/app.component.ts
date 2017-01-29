@@ -5,9 +5,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'my-app',
     template: `
         <div>DateTimePicker Demo</div>
-        <div>
-            <span datetimePicker></span>
-        </div>
+        <div style="height:100px; width:100px" datetimePicker></div>
     `
 })
 export class AppComponent implements OnInit {

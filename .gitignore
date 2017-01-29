@@ -6,6 +6,7 @@ coverage
 node_modules
 ng2datetime
 vendor
+server.js
 
 typings
 dist
