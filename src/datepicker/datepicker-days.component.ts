@@ -9,7 +9,7 @@ import { DateUtils } from './utils/util';
   template: `
   <table>
     <thead>
-      <tr>
+      <tr class="calendar-header">
         <th class="prev-calendar-btn calendar-btn" (click)="prevMonth()">◄</th>
         <th colspan="5" class="scope-out">{{MONTHS[date.getMonth()]}} {{date.getFullYear()}}</th>
         <th class="next-calendar-btn calendar-btn" (click)="nextMonth()">►</th>

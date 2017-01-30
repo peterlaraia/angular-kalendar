@@ -2,24 +2,53 @@ import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@
 
 @Component({
     moduleId: module.id,
-    selector: '[datetimePicker]',
+    selector: 'date-time-picker',
     template: `
-    <div #datePicker>
-        <date-picker *ngIf="showDate" style="position: relative"></date-picker>
-        <input (focus)="showDate = true" type="text"/>
+    <div class="date-picker" *ngIf="showing">
+        <date-picker-days [(date)]="date"></date-picker-days>
     </div>
-    `
+    <input (focus)="showing = true" type="text"/>
+    `,
+    styles: [`
+        :host {
+            position: relative;
+        }
+
+        .date-picker {
+            position: absolute;
+            display: block;
+            min-width:100px;
+            text-align: center;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, .15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            top: 20px;
+            z-index:10;
+        }
+        
+        :host /deep/ .calendar-header {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select: none;
+            
+            cursor: pointer;
+        }
+    `]
 })
 export class DatetimeComponent {
+
     @Input() options: any = {
         showTimepicker: true
     }
-    private showDate: boolean = false;
-    
-    @ViewChild('datePicker') datePickerRef: ElementRef;
-    
+
+    date: Date = new Date();
+    showing: boolean = false;
+
     @HostListener('document:click', ['$event'])
     onClick(e: any) {
-        this.showDate = this.datePickerRef ? this.datePickerRef.nativeElement.contains(e.target) : false;
+        this.showing = this.el.nativeElement.contains(e.target);
     }
+
+    constructor(private el: ElementRef) {}
 }
