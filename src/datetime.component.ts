@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@
     <div class="date-picker" *ngIf="showing">
         <date-picker-days [(date)]="date"></date-picker-days>
     </div>
-    <input (focus)="showing = true" type="text"/>
+    <input (focus)="showing = true" type="text" [value]="date"/>
     `,
     styles: [`
         :host {
@@ -24,15 +24,13 @@ import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@
             box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
             top: 20px;
             z-index:10;
-        }
-        
-        :host /deep/ .calendar-header {
+
+            cursor: pointer;
+
             -webkit-user-select: none;
             -moz-user-select: none;
             -khtml-user-select: none;
             -ms-user-select: none;
-            
-            cursor: pointer;
         }
     `]
 })

@@ -26,13 +26,23 @@ import { DateUtils } from './utils/util';
     </thead>
     <tbody>
       <tr *ngFor="let week of month">
-        <th *ngFor="let day of week" (click)="updateDate(day)">
+        <td *ngFor="let day of week" (click)="updateDate(day)" class="calendar-day" [ngClass]="{'calendar-selected': dayIsSelected(day)}">
           {{day.getDate()}}
-        </th>
+        </td>
       </tr>
     </tbody>
   </table>
-  `
+  `,
+  styles: [`
+    .calendar-day:hover {
+      background-color: rgba(200, 200, 200, 0.5);
+    }
+
+    .calendar-day.calendar-selected {
+      background-color: rgba(150, 150, 150, 1);
+      color: white;
+    }
+  `]
 })
 export class DatePickerDaysComponent {
   dateValue: Date;
@@ -68,5 +78,11 @@ export class DatePickerDaysComponent {
   prevMonth(): void {
     this.date.setMonth(this.date.getMonth() - 1);
     this.reset();
+  }
+
+  dayIsSelected(day: Date): boolean {
+      return day.getDate() == this.date.getDate() &&
+             day.getMonth() == this.date.getMonth() &&
+             day.getFullYear() == this.date.getFullYear();
   }
 }
