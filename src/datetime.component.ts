@@ -1,5 +1,7 @@
 import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@angular/core';
 
+import { DateFormatter } from './datepicker/utils/date-formatter';
+
 @Component({
     moduleId: module.id,
     selector: 'date-time-picker',
@@ -7,7 +9,7 @@ import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@
     <div class="date-picker" *ngIf="showing">
         <date-picker-days [(date)]="date"></date-picker-days>
     </div>
-    <input (focus)="showing = true" type="text" [value]="date"/>
+    <input (focus)="showing = true" type="text" [value]="getFormattedDate()"/>
     `,
     styles: [`
         :host {
@@ -49,4 +51,8 @@ export class DatetimeComponent {
     }
 
     constructor(private el: ElementRef) {}
+
+    getFormattedDate(): string {
+        return DateFormatter.formatDate(this.date, 'm/d/yyyy');
+    }
 }
