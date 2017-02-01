@@ -11,7 +11,7 @@ import { DateUtils } from './utils/util';
     <thead>
       <tr class="calendar-header">
         <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
-        <th colspan="5" class="ang2cal-selectable">{{MONTHS[date.getMonth()]}} {{date.getFullYear()}}</th>
+        <th colspan="5" class="ang2cal-selectable">{{MONTHS[currentCalendarMonth.getMonth()]}} {{currentCalendarMonth.getFullYear()}}</th>
         <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
       </tr>
       <tr>
@@ -63,11 +63,14 @@ export class DatePickerDaysComponent {
     this.dateValue = val;
     this.dateChange.emit(this.dateValue);
   }
+
+  currentCalendarMonth: Date;
   
   month: Date[][] = [];
   MONTHS = CalendarDisplay.MONTHS;
   
   ngOnInit(): void {
+    this.currentCalendarMonth = new Date(this.date.getTime());
     this.reset();
   }
   
@@ -76,16 +79,18 @@ export class DatePickerDaysComponent {
   }
   
   reset(): void {
-    this.month = DateUtils.buildCalendar(this.date.getMonth(), this.date.getFullYear());
+    this.month = DateUtils.buildCalendar(this.currentCalendarMonth.getMonth(), this.currentCalendarMonth.getFullYear());
   }
   
   nextMonth(): void {
-    this.date.setMonth(this.date.getMonth() + 1);
+    this.currentCalendarMonth.setDate(1);
+    this.currentCalendarMonth.setMonth(this.currentCalendarMonth.getMonth() + 1);
     this.reset();
   }
   
   prevMonth(): void {
-    this.date.setMonth(this.date.getMonth() - 1);
+    this.currentCalendarMonth.setDate(1);
+    this.currentCalendarMonth.setMonth(this.currentCalendarMonth.getMonth() - 1);
     this.reset();
   }
 
@@ -96,6 +101,6 @@ export class DatePickerDaysComponent {
   }
 
   dayInThisMonth(day: Date): boolean {
-      return day.getMonth() === this.date.getMonth()
+      return day.getMonth() === this.currentCalendarMonth.getMonth();
   }
 }
