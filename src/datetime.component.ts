@@ -6,7 +6,7 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
     moduleId: module.id,
     selector: 'date-time-picker',
     template: `
-    <div class="date-picker" *ngIf="showing">
+    <div class="ang2cal-datepicker" *ngIf="showing">
         <date-picker-days [(date)]="date"></date-picker-days>
     </div>
     <input (focus)="showing = true" type="text" [value]="getFormattedDate()"/>
@@ -16,10 +16,15 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
             position: relative;
         }
 
-        .date-picker {
+        :host /deep/ .ang2cal-selectable:hover {
+            background-color: #ddd;
+        }
+
+        .ang2cal-datepicker {
             position: absolute;
             display: block;
-            min-width:100px;
+            width: 200px;
+            height: 200px;
             text-align: center;
             background: white;
             border: 1px solid rgba(0, 0, 0, .15);

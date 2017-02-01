@@ -10,23 +10,25 @@ import { DateUtils } from './utils/util';
   <table>
     <thead>
       <tr class="calendar-header">
-        <th class="prev-calendar-btn calendar-btn" (click)="prevMonth()">◄</th>
-        <th colspan="5" class="scope-out">{{MONTHS[date.getMonth()]}} {{date.getFullYear()}}</th>
-        <th class="next-calendar-btn calendar-btn" (click)="nextMonth()">►</th>
+        <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
+        <th colspan="5" class="ang2cal-selectable">{{MONTHS[date.getMonth()]}} {{date.getFullYear()}}</th>
+        <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
       </tr>
       <tr>
-        <th class="day-of-week">Su</th>
-        <th class="day-of-week">Mo</th>
-        <th class="day-of-week">Tu</th>
-        <th class="day-of-week">We</th>
-        <th class="day-of-week">Th</th>
-        <th class="day-of-week">Fr</th>
-        <th class="day-of-week">Sa</th>
+        <th class="ang2cal-dow">Su</th>
+        <th class="ang2cal-dow">Mo</th>
+        <th class="ang2cal-dow">Tu</th>
+        <th class="ang2cal-dow">We</th>
+        <th class="ang2cal-dow">Th</th>
+        <th class="ang2cal-dow">Fr</th>
+        <th class="ang2cal-dow">Sa</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let week of month">
-        <td *ngFor="let day of week" (click)="updateDate(day)" class="calendar-day" [ngClass]="{'calendar-selected': dayIsSelected(day)}">
+        <td *ngFor="let day of week" (click)="updateDate(day)" 
+        class="ang2cal-day ang2cal-selectable" 
+        [ngClass]="{'ang2cal-selected': dayIsSelected(day), 'ang2cal-outside-month': !dayInThisMonth(day)}">
           {{day.getDate()}}
         </td>
       </tr>
@@ -34,11 +36,18 @@ import { DateUtils } from './utils/util';
   </table>
   `,
   styles: [`
-    .calendar-day:hover {
-      background-color: rgba(200, 200, 200, 0.5);
+    table {
+      border-spacing: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    .calendar-day.calendar-selected {
+    .ang2cal-outside-month {
+      background-color: #eee;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .ang2cal-day.ang2cal-selected {
       background-color: rgba(150, 150, 150, 1);
       color: white;
     }
@@ -84,5 +93,9 @@ export class DatePickerDaysComponent {
       return day.getDate() == this.date.getDate() &&
              day.getMonth() == this.date.getMonth() &&
              day.getFullYear() == this.date.getFullYear();
+  }
+
+  dayInThisMonth(day: Date): boolean {
+      return day.getMonth() === this.date.getMonth()
   }
 }
