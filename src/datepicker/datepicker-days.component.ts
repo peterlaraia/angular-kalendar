@@ -7,14 +7,14 @@ import { DateUtils } from './utils/util';
   moduleId: module.id,
   selector: 'date-picker-days',
   template: `
-  <table>
+  <table [style.height.rem]="3.5 + 2*month?.length" [style.width.rem]="12.5">
     <thead>
-      <tr class="calendar-header">
+      <tr class="calendar-header" [style.height.rem]="2">
         <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
-        <th colspan="5" class="ang2cal-selectable">{{MONTHS[currentCalendarMonth.getMonth()]}} {{currentCalendarMonth.getFullYear()}}</th>
+        <th colspan="5" class="ang2cal-selectable">{{MONTHS[currentCalendarMonth?.getMonth()]}} {{currentCalendarMonth?.getFullYear()}}</th>
         <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
       </tr>
-      <tr>
+      <tr [style.height.rem]="1.5">
         <th class="ang2cal-dow">Su</th>
         <th class="ang2cal-dow">Mo</th>
         <th class="ang2cal-dow">Tu</th>

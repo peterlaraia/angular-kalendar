@@ -18,13 +18,16 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
 
         :host /deep/ .ang2cal-selectable:hover {
             background-color: #ddd;
+            cursor: pointer;
+        }
+
+        :host /deep/ .ang2cal-btn {
+            cursor: pointer;
         }
 
         .ang2cal-datepicker {
             position: absolute;
             display: block;
-            width: 200px;
-            height: 200px;
             text-align: center;
             background: white;
             border: 1px solid rgba(0, 0, 0, .15);
@@ -32,12 +35,11 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
             top: 20px;
             z-index:10;
 
-            cursor: pointer;
-
             -webkit-user-select: none;
             -moz-user-select: none;
             -khtml-user-select: none;
             -ms-user-select: none;
+            cursor: default;
         }
     `]
 })
