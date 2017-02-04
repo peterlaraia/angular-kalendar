@@ -10,7 +10,7 @@ import { View } from './datepicker/view';
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
         <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [(date)]="date" (viewChange)="updateView($event)"></date-picker-days>
         <date-picker-months *ngSwitchCase="views.Months" [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-months>
-        <div *ngSwitchCase="views.Years">Years</div>
+        <date-picker-years *ngSwitchCase="views.Years"   [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-years>
         <div *ngSwitchCase="views.Decades">Decades</div>
     </div>
     <input (focus)="onFocus()" type="text" [value]="getFormattedDate()"/>

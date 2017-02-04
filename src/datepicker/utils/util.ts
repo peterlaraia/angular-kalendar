@@ -20,5 +20,15 @@ export class DateUtils {
     } while (date.getMonth() === month);
     return calendar;
   }
+
+  static buildDecade(year: number): number[] {
+    let decade: number[] = [];
+    year = year - (year % 10);
+    do {
+      decade.push(year);
+      year++;
+    } while (year % 10 != 0)
+    return decade;
+  }
 }
 

@@ -12,7 +12,7 @@ import { View } from './view';
     <thead>
       <tr class="calendar-header" [style.height.rem]="2">
         <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
-        <th colspan="5" class="ang2cal-selectable" (click)="onViewChange($event)">{{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}</th>
+        <th colspan="5" class="ang2cal-selectable" (click)="onViewHigher($event)">{{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}</th>
         <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
       </tr>
       <tr [style.height.rem]="1.5">
@@ -76,7 +76,7 @@ export class DatePickerDaysComponent {
   }
 
   @Output() viewChange: EventEmitter<View> = new EventEmitter();
-  onViewChange(e: Event) {
+  onViewHigher(e: any) {
     e.stopPropagation();
     this.viewChange.emit(View.Months);
   }

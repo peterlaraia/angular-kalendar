@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { DatePickerDaysComponent } from './datepicker/datepicker-days.component';
 import { DatePickerMonthsComponent } from './datepicker/datepicker-months.component';
+import { DatePickerYearsComponent } from './datepicker/datepicker-years.component';
 import { DatetimeComponent }   from './datetime.component';
 import { TimePickerComponent } from './timepicker/timepicker.component';
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [DatetimeComponent, TimePickerComponent, DatePickerDaysComponent, DatePickerMonthsComponent],
+    declarations: [DatetimeComponent, TimePickerComponent, DatePickerDaysComponent, DatePickerMonthsComponent, DatePickerYearsComponent],
     providers: [],
     exports: [DatetimeComponent, TimePickerComponent]
 })
