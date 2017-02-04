@@ -1,15 +1,19 @@
 import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@angular/core';
 
 import { DateFormatter } from './datepicker/utils/date-formatter';
+import { View } from './datepicker/view';
 
 @Component({
     moduleId: module.id,
     selector: 'date-time-picker',
     template: `
-    <div class="ang2cal-datepicker" *ngIf="showing">
-        <date-picker-days [(date)]="date"></date-picker-days>
+    <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
+        <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [(date)]="date" (viewChange)="updateView($event)"></date-picker-days>
+        <date-picker-months *ngSwitchCase="views.Months" [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-months>
+        <div *ngSwitchCase="views.Years">Years</div>
+        <div *ngSwitchCase="views.Decades">Decades</div>
     </div>
-    <input (focus)="showing = true" type="text" [value]="getFormattedDate()"/>
+    <input (focus)="onFocus()" type="text" [value]="getFormattedDate()"/>
     `,
     styles: [`
         :host {
@@ -43,21 +47,41 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
         }
     `]
 })
-export class DatetimeComponent {
+export class DatetimeComponent implements OnInit {
 
     @Input() options: any = {
         showTimepicker: true
     }
 
-    date: Date = new Date();
-    showing: boolean = false;
+    date: Date;
+    displayDate: Date;
+    view: View = undefined;
+    views = View;
 
     @HostListener('document:click', ['$event'])
-    onClick(e: any) {
-        this.showing = this.el.nativeElement.contains(e.target);
+    onClick(e: any): void {
+        if (this.view && !this.el.nativeElement.contains(e.target)) {
+            this.updateView(undefined);
+        }
+        //this.view = this.el.nativeElement.contains(e.target) ? this.view : undefined;
     }
 
     constructor(private el: ElementRef) {}
+
+    ngOnInit(): void {
+        this.date = new Date();
+        this.displayDate = new Date();
+    }
+
+    onFocus(): void {
+        if(!this.view) {
+            this.updateView(View.Calendar);
+        }
+    }
+
+    updateView(newView: View): void {
+        this.view = newView;
+    }
 
     getFormattedDate(): string {
         return DateFormatter.formatDate(this.date, 'm/d/yyyy');

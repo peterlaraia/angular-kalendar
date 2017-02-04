@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import { CalendarDisplay } from './utils/calendar-display'
 import { DateUtils } from './utils/util';
+import { View } from './view';
 
 @Component({
   moduleId: module.id,
@@ -11,7 +12,7 @@ import { DateUtils } from './utils/util';
     <thead>
       <tr class="calendar-header" [style.height.rem]="2">
         <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
-        <th colspan="5" class="ang2cal-selectable">{{MONTHS[currentCalendarMonth?.getMonth()]}} {{currentCalendarMonth?.getFullYear()}}</th>
+        <th colspan="5" class="ang2cal-selectable" (click)="onViewChange($event)">{{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}</th>
         <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
       </tr>
       <tr [style.height.rem]="1.5">
@@ -64,33 +65,47 @@ export class DatePickerDaysComponent {
     this.dateChange.emit(this.dateValue);
   }
 
-  currentCalendarMonth: Date;
-  
+  displayDateValue: Date;
+  @Output() displayDateChange = new EventEmitter();
+  @Input() get displayDate() {
+    return this.displayDateValue;
+  }
+  set displayDate(val: Date) {
+    this.displayDateValue = val;
+    this.displayDateChange.emit(this.displayDateValue);
+  }
+
+  @Output() viewChange: EventEmitter<View> = new EventEmitter();
+  onViewChange(e: Event) {
+    e.stopPropagation();
+    this.viewChange.emit(View.Months);
+  }
+
   month: Date[][] = [];
   MONTHS = CalendarDisplay.MONTHS;
   
   ngOnInit(): void {
-    this.currentCalendarMonth = new Date(this.date.getTime());
     this.reset();
   }
   
   updateDate(newDate: Date): void {
     this.date = newDate;
+    this.displayDate = new Date(newDate.getTime());
   }
   
   reset(): void {
-    this.month = DateUtils.buildCalendar(this.currentCalendarMonth.getMonth(), this.currentCalendarMonth.getFullYear());
+    this.month = DateUtils.buildCalendar(this.displayDate.getMonth(), this.displayDate.getFullYear());
   }
   
   nextMonth(): void {
-    this.currentCalendarMonth.setDate(1);
-    this.currentCalendarMonth.setMonth(this.currentCalendarMonth.getMonth() + 1);
+    this.displayDate.setDate(1);
+    this.displayDate.setMonth(this.displayDate.getMonth() + 1);
     this.reset();
   }
   
   prevMonth(): void {
-    this.currentCalendarMonth.setDate(1);
-    this.currentCalendarMonth.setMonth(this.currentCalendarMonth.getMonth() - 1);
+    this.displayDate.setDate(1);
+    this.displayDate.setMonth(this.displayDate.getMonth() - 1);
     this.reset();
   }
 
@@ -101,6 +116,6 @@ export class DatePickerDaysComponent {
   }
 
   dayInThisMonth(day: Date): boolean {
-      return day.getMonth() === this.currentCalendarMonth.getMonth();
+      return day.getMonth() === this.displayDate.getMonth();
   }
 }
