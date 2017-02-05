@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import * as _ from 'lodash';
 import { DateUtils } from './../../../src/datepicker/utils/util';
 
-describe('Date Utils Calendar Builder', () => {
+describe('Date Utils Calendar Display Builder', () => {
     it('should create a calendar for Feb 2017', () => {
         let calendar: Date[][] = DateUtils.buildCalendar(1, 2017);
         expect(calendar.length).to.equal(5);
