@@ -29,6 +29,11 @@ import { View } from './view';
     `
 })
 export class DatePickerYearsComponent implements OnInit {
+    years: number[];
+
+    @Input() centuryView: boolean = false;
+    @Output() viewChange: EventEmitter<View> = new EventEmitter();
+
     displayDateValue: Date;
     @Output() displayDateChange = new EventEmitter();
     @Input() get displayDate() {
@@ -38,18 +43,6 @@ export class DatePickerYearsComponent implements OnInit {
         this.displayDateValue = val;
         this.displayDateChange.emit(this.displayDateValue);
     }
-
-    @Input() centuryView: boolean = false;
-
-    @Output() viewChange: EventEmitter<View> = new EventEmitter();
-    onViewHigher(e: any) {
-        if (!this.centuryView) {
-            e.stopPropagation();
-            this.viewChange.emit(View.Decades);
-        }
-    }
-
-    years: number[];
     
     ngOnInit() { 
         this.reset();
@@ -74,5 +67,12 @@ export class DatePickerYearsComponent implements OnInit {
     next() {
         this.displayDate.setFullYear(this.displayDate.getFullYear() + (this.centuryView ? 100 : 10));
         this.reset();
+    }
+
+    onViewHigher(e: any) {
+        if (!this.centuryView) {
+            e.stopPropagation();
+            this.viewChange.emit(View.Decades);
+        }
     }
 }

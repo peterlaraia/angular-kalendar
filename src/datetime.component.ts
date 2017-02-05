@@ -10,10 +10,24 @@ import { View } from './datepicker/view';
     selector: 'date-time-picker',
     template: `
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
-        <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [date]="date" (dateChange)="onDateChange($event)" (viewChange)="updateView($event)"></date-picker-days>
-        <date-picker-months *ngSwitchCase="views.Months" [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-months>
-        <date-picker-years *ngSwitchCase="views.Years"   [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-years>
-        <date-picker-years *ngSwitchCase="views.Decades" [(displayDate)]="displayDate" (viewChange)="updateView($event)" [centuryView]="true"></date-picker-years>
+        <date-picker-days *ngSwitchCase="views.Calendar" 
+        [(displayDate)]="displayDate" 
+        [date]="date" 
+        (dateChange)="onDateChange($event)" 
+        (viewChange)="updateView($event)"></date-picker-days>
+
+        <date-picker-months *ngSwitchCase="views.Months" 
+        [(displayDate)]="displayDate" 
+        (viewChange)="updateView($event)"></date-picker-months>
+
+        <date-picker-years *ngSwitchCase="views.Years"   
+        [(displayDate)]="displayDate" 
+        (viewChange)="updateView($event)"></date-picker-years>
+
+        <date-picker-years *ngSwitchCase="views.Decades" 
+        [(displayDate)]="displayDate" 
+        (viewChange)="updateView($event)" 
+        [centuryView]="true"></date-picker-years>
     </div>
     <input (focus)="onFocus()" type="text" [value]="getFormattedDate()"/>
     `,
@@ -57,18 +71,17 @@ import { View } from './datepicker/view';
     ]
 })
 export class DatetimeComponent implements OnInit, ControlValueAccessor {
-
-    @Input() options: any = {
-        showTimepicker: true
-    }
-
     date: Date;
     displayDate: Date;
     view: View = undefined;
     views = View;
 
-    propagateChange = (_: any) => {};
-    propagateTouch = () => {};
+    @Input() options: any = {
+        showTimepicker: true
+    };    
+
+    propagateChange = (_: any) => {/*will be reassigned*/};
+    propagateTouch = () => {/*will be reassigned*/};
 
     @HostListener('document:click', ['$event'])
     onClick(e: any): void {

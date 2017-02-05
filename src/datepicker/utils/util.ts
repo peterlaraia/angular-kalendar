@@ -31,11 +31,11 @@ export class DateUtils {
 
   static buildYearsByStepSize(year: number, stepSize: number) {
     let list: number[] = [];
-    year = year - (year % (10*stepSize))
+    year = year - (year % (10*stepSize));
     do {
       list.push(year);
       year += stepSize;
-    } while (year % (10*stepSize) != 0)
+    } while (year % (10*stepSize) !== 0);
     return list;
   }
 

@@ -9,7 +9,7 @@ export class DateFormatter {
         'mmmm': (date: Date) => `${CalendarDisplay.MONTHS[date.getMonth()]}`,
         'yy': (date: Date) => `${date.getFullYear()}`.substring(2),
         'yyyy': (date: Date) => `${date.getFullYear()}`
-    }
+    };
 
     static formatDate(date: Date, format: string): string {
         let formattedDate: string = '';
@@ -17,7 +17,7 @@ export class DateFormatter {
         for(let i = 0; i < format.length; i++) {
             let char: string = format.charAt(i);
             if (!pattern) pattern = char;
-            else if (pattern.length && pattern.charAt(0) === char) pattern += char
+            else if (pattern.length && pattern.charAt(0) === char) pattern += char;
             else {
                 formattedDate += DateFormatter.formatMap[pattern] ? DateFormatter.formatMap[pattern](date) : pattern;
                 pattern = char;

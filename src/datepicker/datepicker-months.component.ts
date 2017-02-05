@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CalendarDisplay } from './utils/calendar-display';
 import { View } from './view';
@@ -26,7 +26,11 @@ import { View } from './view';
     </table>
     `
 })
-export class DatePickerMonthsComponent implements OnInit {
+export class DatePickerMonthsComponent {
+    months = CalendarDisplay.MONTHS_SHORT;
+
+    @Output() viewChange: EventEmitter<View> = new EventEmitter();
+    
     displayDateValue: Date;
     @Output() displayDateChange = new EventEmitter();
     @Input() get displayDate() {
@@ -35,19 +39,7 @@ export class DatePickerMonthsComponent implements OnInit {
     set displayDate(val: Date) {
         this.displayDateValue = val;
         this.displayDateChange.emit(this.displayDateValue);
-    }
-
-    @Output() viewChange: EventEmitter<View> = new EventEmitter();
-    onViewHigher(e: any) {
-        e.stopPropagation();
-        this.viewChange.emit(View.Years);
-    }
-
-    months = CalendarDisplay.MONTHS_SHORT;
-
-    ngOnInit(): void {
-
-    }
+    }    
 
     updateMonth(month: number, e: any) {
         this.displayDate.setDate(1);
@@ -62,5 +54,10 @@ export class DatePickerMonthsComponent implements OnInit {
 
     nextYear(): void {
         this.displayDate.setFullYear(this.displayDate.getFullYear() + 1);
+    }
+
+    onViewHigher(e: any) {
+        e.stopPropagation();
+        this.viewChange.emit(View.Years);
     }
 }
