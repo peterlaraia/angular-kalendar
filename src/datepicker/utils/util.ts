@@ -38,5 +38,9 @@ export class DateUtils {
     } while (year % (10*stepSize) != 0)
     return list;
   }
+
+  static isDate(obj: any): boolean {
+    return Object.prototype.toString.call(obj) === '[object Date]';
+  }
 }
 

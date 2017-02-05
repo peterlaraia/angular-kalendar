@@ -55,15 +55,8 @@ import { View } from './view';
   `]
 })
 export class DatePickerDaysComponent {
-  dateValue: Date;
   @Output() dateChange = new EventEmitter();
-  @Input() get date() {
-    return this.dateValue;
-  }
-  set date(val: Date) {
-    this.dateValue = val;
-    this.dateChange.emit(this.dateValue);
-  }
+  @Input() date: Date;
 
   displayDateValue: Date;
   @Output() displayDateChange = new EventEmitter();
@@ -91,6 +84,7 @@ export class DatePickerDaysComponent {
   updateDate(newDate: Date): void {
     this.date = newDate;
     this.displayDate = new Date(newDate.getTime());
+    this.dateChange.emit(this.date);
   }
   
   reset(): void {

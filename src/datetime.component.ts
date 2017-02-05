@@ -1,4 +1,6 @@
-import { Component, ElementRef, Input, HostListener, OnInit, ViewChild } from '@angular/core';
+import { DateUtils } from './datepicker/utils/util';
+import { Component, ElementRef, forwardRef, Input, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { DateFormatter } from './datepicker/utils/date-formatter';
 import { View } from './datepicker/view';
@@ -8,7 +10,7 @@ import { View } from './datepicker/view';
     selector: 'date-time-picker',
     template: `
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
-        <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [(date)]="date" (viewChange)="updateView($event)"></date-picker-days>
+        <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [date]="date" (dateChange)="onDateChange($event)" (viewChange)="updateView($event)"></date-picker-days>
         <date-picker-months *ngSwitchCase="views.Months" [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-months>
         <date-picker-years *ngSwitchCase="views.Years"   [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-years>
         <date-picker-years *ngSwitchCase="views.Decades" [(displayDate)]="displayDate" (viewChange)="updateView($event)" [centuryView]="true"></date-picker-years>
@@ -45,9 +47,16 @@ import { View } from './datepicker/view';
             -ms-user-select: none;
             cursor: default;
         }
-    `]
+    `],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DatetimeComponent),
+            multi: true
+        }
+    ]
 })
-export class DatetimeComponent implements OnInit {
+export class DatetimeComponent implements OnInit, ControlValueAccessor {
 
     @Input() options: any = {
         showTimepicker: true
@@ -58,13 +67,15 @@ export class DatetimeComponent implements OnInit {
     view: View = undefined;
     views = View;
 
+    propagateChange = (_: any) => {};
+    propagateTouch = () => {};
+
     @HostListener('document:click', ['$event'])
     onClick(e: any): void {
         if (this.view && !this.el.nativeElement.contains(e.target)) {
             this.displayDate = undefined;
             this.updateView(undefined);
         }
-        //this.view = this.el.nativeElement.contains(e.target) ? this.view : undefined;
     }
 
     constructor(private el: ElementRef) {}
@@ -79,6 +90,7 @@ export class DatetimeComponent implements OnInit {
             this.displayDate = new Date(this.date.getTime());
             this.updateView(View.Calendar);
         }
+        this.propagateTouch();
     }
 
     updateView(newView: View): void {
@@ -87,5 +99,29 @@ export class DatetimeComponent implements OnInit {
 
     getFormattedDate(): string {
         return DateFormatter.formatDate(this.date, 'm/d/yyyy');
+    }
+
+    /*
+     *  ControlValueAccessor Functions
+     */
+
+    writeValue(val: any) {
+        if (DateUtils.isDate(val)) {
+            this.date = val;
+            this.displayDate = new Date(this.date.getTime());
+        }
+    }
+
+    registerOnChange(fn: any) {
+        this.propagateChange = fn;
+    }
+
+    registerOnTouched(fn: any) {
+        this.propagateTouch = fn;
+    }
+
+    onDateChange(newDate: Date): void {
+        this.date = newDate;
+        this.propagateChange(this.date);
     }
 }
