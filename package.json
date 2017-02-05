@@ -4,6 +4,8 @@
   "description": "angular2 datetime picker",
   "scripts": {
     "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts",
+    "test": "mocha --require ts-node/register test/**/*.spec.ts --recursive",
+    "test:watch": "mocha -w --require ts-node/register test/**/*.spec.ts --recursive",
     "distclean": "rimraf dist",
     "transpile": "tsc -p tsconfig-esm.json",
     "package": "rollup -c rollup.config.js dist/angular2-datetime.module.js > dist/angular2-datetime.bundle.js",
