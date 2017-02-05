@@ -10,9 +10,11 @@ import { View } from './view';
     <table [style.height.rem]="4">
         <thead>
             <tr class="calendar-header" [style.height.rem]="2">
-                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevDecade()">◄</th>
-                <th colspan="8" class="ang2cal-selectable" (click)="onViewHigher($event)">{{displayDate?.getFullYear() - (displayDate?.getFullYear() % 10)}}'s</th>
-                <th class="ang2cal-next-btn ang2cal-btn" (click)="nextDecade()">►</th>
+                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prev()">◄</th>
+                <th colspan="8" [ngClass]="{'ang2cal-selectable': !centuryView}" (click)="onViewHigher($event)">
+                {{displayDate?.getFullYear() - (displayDate?.getFullYear() % (centuryView ? 100 : 10))}}'s
+                </th>
+                <th class="ang2cal-next-btn ang2cal-btn" (click)="next()">►</th>
             </tr>
         </thead>
         <tbody>
@@ -37,10 +39,14 @@ export class DatePickerYearsComponent implements OnInit {
         this.displayDateChange.emit(this.displayDateValue);
     }
 
+    @Input() centuryView: boolean = false;
+
     @Output() viewChange: EventEmitter<View> = new EventEmitter();
     onViewHigher(e: any) {
-        e.stopPropagation();
-        this.viewChange.emit(View.Decades);
+        if (!this.centuryView) {
+            e.stopPropagation();
+            this.viewChange.emit(View.Decades);
+        }
     }
 
     years: number[];
@@ -50,22 +56,23 @@ export class DatePickerYearsComponent implements OnInit {
     }
 
     reset() {
-        this.years = DateUtils.buildDecade(this.displayDate.getFullYear());
+        let year = this.displayDate.getFullYear();
+        this.years = this.centuryView ? DateUtils.buildCentury(year) : DateUtils.buildDecade(year);
     }
 
     updateYear(year: number, e: any) {
         this.displayDate.setFullYear(year);
         e.stopPropagation();
-        this.viewChange.emit(View.Months);
+        this.viewChange.emit(this.centuryView ? View.Years : View.Months);
     }
 
-    prevDecade() {
-        this.displayDate.setFullYear(this.displayDate.getFullYear() - 10);
+    prev() {
+        this.displayDate.setFullYear(this.displayDate.getFullYear() - (this.centuryView ? 100 : 10));
         this.reset();
     }
 
-    nextDecade() {
-        this.displayDate.setFullYear(this.displayDate.getFullYear() + 10);
+    next() {
+        this.displayDate.setFullYear(this.displayDate.getFullYear() + (this.centuryView ? 100 : 10));
         this.reset();
     }
 }

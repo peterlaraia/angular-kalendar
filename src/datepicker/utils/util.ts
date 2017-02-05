@@ -22,13 +22,21 @@ export class DateUtils {
   }
 
   static buildDecade(year: number): number[] {
-    let decade: number[] = [];
-    year = year - (year % 10);
+    return DateUtils.buildYearsByStepSize(year, 1);
+  }
+
+  static buildCentury(year: number): number[] {
+    return DateUtils.buildYearsByStepSize(year, 10);
+  }
+
+  static buildYearsByStepSize(year: number, stepSize: number) {
+    let list: number[] = [];
+    year = year - (year % (10*stepSize))
     do {
-      decade.push(year);
-      year++;
-    } while (year % 10 != 0)
-    return decade;
+      list.push(year);
+      year += stepSize;
+    } while (year % (10*stepSize) != 0)
+    return list;
   }
 }
 

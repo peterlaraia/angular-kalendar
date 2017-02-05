@@ -11,7 +11,7 @@ import { View } from './datepicker/view';
         <date-picker-days *ngSwitchCase="views.Calendar" [(displayDate)]="displayDate" [(date)]="date" (viewChange)="updateView($event)"></date-picker-days>
         <date-picker-months *ngSwitchCase="views.Months" [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-months>
         <date-picker-years *ngSwitchCase="views.Years"   [(displayDate)]="displayDate" (viewChange)="updateView($event)"></date-picker-years>
-        <div *ngSwitchCase="views.Decades">Decades</div>
+        <date-picker-years *ngSwitchCase="views.Decades" [(displayDate)]="displayDate" (viewChange)="updateView($event)" [centuryView]="true"></date-picker-years>
     </div>
     <input (focus)="onFocus()" type="text" [value]="getFormattedDate()"/>
     `,
@@ -61,6 +61,7 @@ export class DatetimeComponent implements OnInit {
     @HostListener('document:click', ['$event'])
     onClick(e: any): void {
         if (this.view && !this.el.nativeElement.contains(e.target)) {
+            this.displayDate = undefined;
             this.updateView(undefined);
         }
         //this.view = this.el.nativeElement.contains(e.target) ? this.view : undefined;
@@ -75,6 +76,7 @@ export class DatetimeComponent implements OnInit {
 
     onFocus(): void {
         if(!this.view) {
+            this.displayDate = new Date(this.date.getTime());
             this.updateView(View.Calendar);
         }
     }
