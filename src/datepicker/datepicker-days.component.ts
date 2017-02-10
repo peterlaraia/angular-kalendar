@@ -80,7 +80,7 @@ export class DatePickerDaysComponent implements OnInit {
 
   updateDate(newDate: Date): void {
     this.date = newDate;
-    this.displayDate = new Date(newDate.getTime());
+    this.displayDate = this.dayInThisMonth(newDate) ? new Date(newDate.getTime()) : this.displayDate;
     this.dateChange.emit(this.date);
   }
 
@@ -107,7 +107,8 @@ export class DatePickerDaysComponent implements OnInit {
   }
 
   dayInThisMonth(day: Date): boolean {
-      return day.getMonth() === this.displayDate.getMonth();
+      return day.getMonth() === this.displayDate.getMonth() && 
+      day.getFullYear() === this.displayDate.getFullYear();
   }
 
   onViewHigher(e: any) {
