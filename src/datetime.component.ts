@@ -43,6 +43,20 @@ import { View } from './datepicker/view';
 
         :host /deep/ .ang2cal-btn {
             cursor: pointer;
+            border-radius: 100%;
+        }
+
+        :host /deep/ .ang2cal-btn:hover {
+            background-color: #ddd;
+            color: white;
+        }
+
+        :host /deep/ .ang2cal-next-btn::before {
+            content: "\\232A";
+        }
+
+        :host /deep/ .ang2cal-prev-btn::before {
+            content: "\\2329";
         }
 
         .ang2cal-datepicker {

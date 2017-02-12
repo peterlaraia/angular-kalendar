@@ -10,11 +10,11 @@ import { View } from './view';
     <table [style.height.rem]="4">
         <thead>
             <tr class="calendar-header" [style.height.rem]="2">
-                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prev()">◄</th>
+                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prev()"></th>
                 <th colspan="8" [ngClass]="{'ang2cal-selectable': !centuryView}" (click)="onViewHigher($event)">
                 {{displayDate?.getFullYear() - (displayDate?.getFullYear() % (centuryView ? 100 : 10))}}'s
                 </th>
-                <th class="ang2cal-next-btn ang2cal-btn" (click)="next()">►</th>
+                <th class="ang2cal-next-btn ang2cal-btn" (click)="next()"></th>
             </tr>
         </thead>
         <tbody>

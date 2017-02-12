@@ -10,9 +10,9 @@ import { View } from './view';
     <table [style.height.rem]="4">
         <thead>
             <tr class="calendar-header" [style.height.rem]="2">
-                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevYear()">◄</th>
+                <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevYear()"></th>
                 <th colspan="10" class="ang2cal-selectable" (click)="onViewHigher($event)">{{displayDate?.getFullYear()}}</th>
-                <th class="ang2cal-next-btn ang2cal-btn" (click)="nextYear()">►</th>
+                <th class="ang2cal-next-btn ang2cal-btn" (click)="nextYear()"></th>
             </tr>
         </thead>
         <tbody>

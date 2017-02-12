@@ -8,14 +8,23 @@ import { View } from './view';
   moduleId: module.id,
   selector: 'date-picker-days',
   template: `
-  <table [style.height.rem]="3.5 + 2*month?.length" [style.width.rem]="12.5">
+  <table [style.height.rem]="3.5 + 2*month?.length" [style.width.rem]="14">
+    <colgroup>
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+      <col style="width: 2rem">
+    </colgroup>
     <thead>
       <tr class="calendar-header" [style.height.rem]="2">
-        <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()">◄</th>
+        <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()"></th>
         <th colspan="5" class="ang2cal-selectable" (click)="onViewHigher($event)">
           {{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}
         </th>
-        <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()">►</th>
+        <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()"></th>
       </tr>
       <tr [style.height.rem]="1.5">
         <th class="ang2cal-dow">Su</th>
@@ -48,6 +57,10 @@ import { View } from './view';
     .ang2cal-outside-month {
       background-color: #eee;
       color: rgba(0, 0, 0, 0.5);
+    }
+
+    .ang2cal-day {
+      border-radius: 8px;
     }
 
     .ang2cal-day.ang2cal-selected {
