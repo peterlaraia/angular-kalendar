@@ -59,13 +59,14 @@ import { View } from './view';
       color: rgba(0, 0, 0, 0.5);
     }
 
-    .ang2cal-day {
+    .ang2cal-day:hover {
       border-radius: 8px;
     }
 
     .ang2cal-day.ang2cal-selected {
       background-color: rgba(150, 150, 150, 1);
       color: white;
+      border-radius: 8px;
     }
   `]
 })
