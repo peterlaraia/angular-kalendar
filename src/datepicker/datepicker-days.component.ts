@@ -93,6 +93,8 @@ export class DatePickerDaysComponent implements OnInit {
   }
 
   updateDate(newDate: Date): void {
+    newDate.setHours(this.date.getHours());
+    newDate.setMinutes(this.date.getMinutes());
     this.date = newDate;
     this.displayDate = this.dayInThisMonth(newDate) ? new Date(newDate.getTime()) : this.displayDate;
     this.dateChange.emit(this.date);

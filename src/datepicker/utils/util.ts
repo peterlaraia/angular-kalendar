@@ -39,6 +39,22 @@ export class DateUtils {
     return list;
   }
 
+  static hoursTo24(hours: number, pm: boolean): number {
+    if (pm) {
+      if (hours < 12) return hours + 12;
+    } else {
+      if (hours === 12) return 0;
+    }
+    return hours;
+  }
+
+  static hoursTo12(hours: number): any[] {
+    if (hours === 0) {
+      return [12, 'AM'];
+    }
+    return [hours > 12 ? hours - 12 : hours, hours >= 12 ? 'PM' : 'AM']
+  }
+
   static isDate(obj: any): boolean {
     return Object.prototype.toString.call(obj) === '[object Date]';
   }

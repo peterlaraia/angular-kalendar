@@ -1,9 +1,11 @@
-import { DateUtils } from './datepicker/utils/util';
 import { Component, ElementRef, forwardRef, Input, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { DateFormatter } from './datepicker/utils/date-formatter';
+import { DateParser } from './datepicker/utils/date-parser';
+import { DateUtils } from './datepicker/utils/util';
 import { View } from './datepicker/view';
+import { DatepickerOptions, DEFAULT_OPTIONS } from './options';
 
 @Component({
     moduleId: module.id,
@@ -29,7 +31,7 @@ import { View } from './datepicker/view';
         (viewChange)="updateView($event)" 
         [centuryView]="true"></date-picker-years>
     </div>
-    <input (focus)="onFocus()" type="text" [value]="getFormattedDate()"/>
+    <input #inputField (focus)="onFocus()" (keydown.tab)="parseDate(inputField.value)" type="text" [value]="getFormattedDate()"/>
     `,
     styles: [`
         :host {
@@ -87,12 +89,18 @@ import { View } from './datepicker/view';
 export class DatetimeComponent implements OnInit, ControlValueAccessor {
     date: Date;
     displayDate: Date;
-    view: View = undefined;
+    view: View;
     views = View;
+    @ViewChild('inputField') inputField: ElementRef;
 
-    @Input() options: any = {
-        showTimepicker: true
-    };    
+    _options: DatepickerOptions;
+    @Input() set options(opt: any) {
+        this._options = <DatepickerOptions>{};
+        Object.assign(this._options, DEFAULT_OPTIONS, opt);
+    }
+    get options() {
+        return this._options;
+    } 
 
     propagateChange = (_: any) => {/*will be reassigned*/};
     propagateTouch = () => {/*will be reassigned*/};
@@ -100,6 +108,9 @@ export class DatetimeComponent implements OnInit, ControlValueAccessor {
     @HostListener('document:click', ['$event'])
     onClick(e: any): void {
         if (this.view && !this.el.nativeElement.contains(e.target)) {
+            if (this.getFormattedDate() !== this.inputField.nativeElement.value) {
+                this.parseDate(this.inputField.nativeElement.value);
+            }
             this.displayDate = undefined;
             this.updateView(undefined);
         }
@@ -108,6 +119,9 @@ export class DatetimeComponent implements OnInit, ControlValueAccessor {
     constructor(private el: ElementRef) {}
 
     ngOnInit(): void {
+        if (!this.options) {
+            this.options = DEFAULT_OPTIONS;
+        }
         this.date = new Date();
         this.displayDate = new Date();
     }
@@ -125,7 +139,20 @@ export class DatetimeComponent implements OnInit, ControlValueAccessor {
     }
 
     getFormattedDate(): string {
-        return DateFormatter.formatDate(this.date, 'm/d/yyyy');
+        return DateFormatter.formatDate(this.date, this.options.format, this.options.hours24);
+    }
+
+    parseDate(dateStr: string): void {
+        let parsedDate: Date = DateParser.parseDate(dateStr, this.options.format);
+        if (parsedDate) {
+            this.onDateChange(parsedDate);
+        }
+        this.updateView(undefined);
+    }
+
+    onDateChange(newDate: Date): void {
+        this.date = newDate;
+        this.propagateChange(this.date);
     }
 
     /*
@@ -145,10 +172,5 @@ export class DatetimeComponent implements OnInit, ControlValueAccessor {
 
     registerOnTouched(fn: any) {
         this.propagateTouch = fn;
-    }
-
-    onDateChange(newDate: Date): void {
-        this.date = newDate;
-        this.propagateChange(this.date);
     }
 }
