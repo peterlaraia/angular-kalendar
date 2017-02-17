@@ -61,6 +61,16 @@ import { DatepickerOptions, DEFAULT_OPTIONS } from './options';
             content: "\\2329";
         }
 
+        :host /deep/ th > div {
+            display: inline;
+        }
+
+        :host /deep/ .ang2cal-selected {
+            background-color: rgba(150, 150, 150, 1);
+            color: white;
+            border-radius: 8px;
+        }
+
         .ang2cal-datepicker {
             position: absolute;
             display: block;

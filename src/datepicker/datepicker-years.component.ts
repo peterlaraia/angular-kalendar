@@ -12,7 +12,11 @@ import { View } from './view';
             <tr class="calendar-header" [style.height.rem]="2">
                 <th class="ang2cal-prev-btn ang2cal-btn" (click)="prev()"></th>
                 <th colspan="8" [ngClass]="{'ang2cal-selectable': !centuryView}" (click)="onViewHigher($event)">
-                {{displayDate?.getFullYear() - (displayDate?.getFullYear() % (centuryView ? 100 : 10))}}'s
+                    <div>
+                        {{displayDate?.getFullYear() - (displayDate?.getFullYear() % (centuryView ? 100 : 10))}}
+                        -
+                        {{(displayDate?.getFullYear() - (displayDate?.getFullYear() % (centuryView ? 100 : 10))) + (centuryView ? 100 : 10)}}
+                    </div>
                 </th>
                 <th class="ang2cal-next-btn ang2cal-btn" (click)="next()"></th>
             </tr>
@@ -20,13 +24,19 @@ import { View } from './view';
         <tbody>
             <tr [style.height.rem]="2">
                 <td *ngFor="let year of years;" (click)="updateYear(year, $event)" 
-                class="ang2cal-year ang2cal-selectable">
+                class="ang2cal-year ang2cal-selectable" 
+                [ngClass]="{'ang2cal-selected': centuryView ? displayDate?.getFullYear() - displayDate?.getFullYear() % 10 === year : year === displayDate?.getFullYear()}">
                 {{year}}
                 </td>
             </tr>
         </tbody>
     </table>
-    `
+    `,
+    styles: [`
+        .ang2cal-year:hover {
+            border-radius: 8px;
+        }
+    `]
 })
 export class DatePickerYearsComponent implements OnInit {
     years: number[];
@@ -54,7 +64,7 @@ export class DatePickerYearsComponent implements OnInit {
     }
 
     updateYear(year: number, e: any) {
-        this.displayDate.setFullYear(year);
+        this.displayDate.setFullYear(this.centuryView && (this.displayDate.getFullYear() - this.displayDate.getFullYear() % 10) == year ? this.displayDate.getFullYear() : year);
         e.stopPropagation();
         this.viewChange.emit(this.centuryView ? View.Years : View.Months);
     }

@@ -11,20 +11,27 @@ import { View } from './view';
         <thead>
             <tr class="calendar-header" [style.height.rem]="2">
                 <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevYear()"></th>
-                <th colspan="10" class="ang2cal-selectable" (click)="onViewHigher($event)">{{displayDate?.getFullYear()}}</th>
+                <th colspan="10" class="ang2cal-selectable" (click)="onViewHigher($event)">
+                    <div>{{displayDate?.getFullYear()}}</div>
+                </th>
                 <th class="ang2cal-next-btn ang2cal-btn" (click)="nextYear()"></th>
             </tr>
         </thead>
         <tbody>
             <tr [style.height.rem]="2">
                 <td *ngFor="let month of months; let i = index;" (click)="updateMonth(i, $event)" 
-                class="ang2cal-month ang2cal-selectable">
+                class="ang2cal-month ang2cal-selectable" [ngClass]="{'ang2cal-selected': i === displayDate?.getMonth()}">
                 {{month}}
                 </td>
             </tr>
         </tbody>
     </table>
-    `
+    `,
+    styles: [`
+        .ang2cal-month:hover {
+            border-radius: 8px;
+        }
+    `]
 })
 export class DatePickerMonthsComponent {
     months = CalendarDisplay.MONTHS_SHORT;

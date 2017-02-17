@@ -22,7 +22,7 @@ import { View } from './view';
       <tr class="calendar-header" [style.height.rem]="2">
         <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()"></th>
         <th colspan="5" class="ang2cal-selectable" (click)="onViewHigher($event)">
-          {{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}
+          <div>{{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}</div>
         </th>
         <th class="ang2cal-next-btn ang2cal-btn" (click)="nextMonth()"></th>
       </tr>
@@ -60,12 +60,6 @@ import { View } from './view';
     }
 
     .ang2cal-day:hover {
-      border-radius: 8px;
-    }
-
-    .ang2cal-day.ang2cal-selected {
-      background-color: rgba(150, 150, 150, 1);
-      color: white;
       border-radius: 8px;
     }
   `]
