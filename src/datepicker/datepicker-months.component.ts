@@ -4,7 +4,6 @@ import { CalendarDisplay } from './utils/calendar-display';
 import { View } from './view';
 
 @Component({
-    moduleId: module.id,
     selector: 'date-picker-months',
     template: `
     <table [style.height.rem]="4">

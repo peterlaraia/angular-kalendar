@@ -8,7 +8,6 @@ import { View } from './datepicker/view';
 import { KalendarOptions, DEFAULT_OPTIONS } from './options';
 
 @Component({
-    moduleId: module.id,
     selector: 'angular-kalendar',
     template: `
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">

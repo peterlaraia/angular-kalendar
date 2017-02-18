@@ -2,17 +2,19 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
         "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "stripInternal": true,
+        "removeComments": true,
         "declaration": true,
         "outDir": "./dist",
         "lib": ["es2015", "dom"],
         "noImplicitAny": true
     },
     "files": [
-        "./src/angular-kalendar.module.ts"
+        "./src/index.ts"
     ],
     "angularCompilerOptions": {
 			"skipTemplateCodegen": true

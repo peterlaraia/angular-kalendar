@@ -4,7 +4,6 @@ import { DateUtils } from './utils/util';
 import { View } from './view';
 
 @Component({
-    moduleId: module.id,
     selector: 'date-picker-years',
     template: `
     <table [style.height.rem]="4">

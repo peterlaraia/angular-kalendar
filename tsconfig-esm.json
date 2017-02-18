@@ -14,6 +14,6 @@
         "removeComments": true
     },
     "files": [
-        "./src/angular-kalendar.module.ts"
+        "./src/index.ts"
     ]
 }

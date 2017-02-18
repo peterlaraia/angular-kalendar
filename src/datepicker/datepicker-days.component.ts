@@ -7,7 +7,6 @@ import { DateUtils } from './utils/util';
 import { View } from './view';
 
 @Component({
-  moduleId: module.id,
   selector: 'date-picker-days',
   template: `
   <div [style.height.rem]="3.5 + 2*month?.length" [style.width.rem]="14">
