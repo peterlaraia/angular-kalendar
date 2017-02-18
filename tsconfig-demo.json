@@ -6,10 +6,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": true,
-    "outDir": "./demo-internal/dist",
+    "outDir": "./demo/dist",
     "lib": ["es2015", "dom"]
   },
   "files": [
-    "./demo-internal/src/main.ts"
+    "./demo/src/main.ts"
   ]
 }

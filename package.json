@@ -11,7 +11,7 @@
     "package": "rollup -c rollup.config.js dist/angular2-datetime.module.js > dist/angular2-datetime.bundle.js",
     "finish": "cp package.json dist && ngc && cp README.md dist",
     "build": "npm run distclean && npm run transpile && npm run package && npm run finish",
-    "build.demo": "rimraf demo-internal/dist demo-internal/ng2datetime/* && tsc -p tsconfig-demo.json && cp dist/* demo-internal/ng2datetime -r"
+    "build.demo": "rimraf demo/dist demo/ng2datetime/* && tsc -p tsconfig-demo.json && cp dist/* demo/ng2datetime -r"
   },
   "repository": {
     "type": "git",
