@@ -15,6 +15,7 @@ import { DatepickerOptions, DEFAULT_OPTIONS } from './options';
         <date-picker-days *ngSwitchCase="views.Calendar" 
         [(displayDate)]="displayDate" 
         [date]="date" 
+        [options]="options"
         (dateChange)="onDateChange($event)" 
         (viewChange)="updateView($event)"></date-picker-days>
 

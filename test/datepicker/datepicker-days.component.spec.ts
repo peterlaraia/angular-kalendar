@@ -18,9 +18,10 @@ describe('DatePicker Days Component', () => {
         comp.dateChange.subscribe((date: Date) => expect(date).to.deep.eq(newDate));
         comp.displayDate = new Date('2012-10-13T12:00');
         comp.date = new Date('2012-10-13T12:00');
+        comp.ngOnInit();
         comp.updateDate(newDate);
-        expect(comp.displayDate).to.deep.eq(newDate);
-        expect(comp.date).to.deep.eq(newDate);
+        expect(comp.displayDate).to.deep.eq(newDate, 'displayDate check');
+        expect(comp.date).to.deep.eq(newDate, 'date check');
     });
 
     it('should update date but not display date', () => {
@@ -28,6 +29,7 @@ describe('DatePicker Days Component', () => {
         comp.dateChange.subscribe((date: Date) => expect(date).to.deep.eq(newDate));
         comp.displayDate = new Date('2012-10-13T12:00');
         comp.date = new Date('2012-10-13T12:00');
+        comp.ngOnInit();
         comp.updateDate(newDate);
         expect(comp.displayDate).to.deep.eq(new Date('2012-10-13T12:00'));
         expect(comp.date).to.deep.eq(newDate);
@@ -86,6 +88,7 @@ describe('DatePicker Days Component', () => {
 
     it('should emit view change event', () => {
         comp.viewChange.subscribe((view: View) => expect(view).to.eq(View.Months))
+        comp.date = new Date('2012-10-13T12:00');
         comp.displayDate = new Date('2012-10-13T12:00');
         comp.ngOnInit();
         comp.onViewHigher({stopPropagation: (): any => undefined})
