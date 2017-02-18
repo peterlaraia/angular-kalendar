@@ -4,7 +4,7 @@ logs
 coverage
 
 node_modules
-ng2datetime
+angular-kalendar
 vendor
 server.js
 

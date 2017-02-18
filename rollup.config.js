@@ -1,6 +1,6 @@
 export default {
     format: 'umd',
-    moduleName: 'angular2-datetime',
+    moduleName: 'angular-kalendar',
     external: [
         '@angular/core',
         '@angular/common'

@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { DatePickerDaysComponent } from './datepicker/datepicker-days.component';
 import { DatePickerMonthsComponent } from './datepicker/datepicker-months.component';
 import { DatePickerYearsComponent } from './datepicker/datepicker-years.component';
-import { DatetimeComponent }   from './datetime.component';
+import { AngularKalendarComponent }   from './angular-kalendar.component';
 
 @NgModule({
     imports: [CommonModule, FormsModule],
-    declarations: [DatetimeComponent, DatePickerDaysComponent, DatePickerMonthsComponent, DatePickerYearsComponent],
+    declarations: [AngularKalendarComponent, DatePickerDaysComponent, DatePickerMonthsComponent, DatePickerYearsComponent],
     providers: [],
-    exports: [DatetimeComponent]
+    exports: [AngularKalendarComponent]
 })
-export class Angular2DatetimeModule { }
+export class AngularKalendarModule { }

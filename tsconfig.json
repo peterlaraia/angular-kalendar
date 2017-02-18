@@ -12,7 +12,7 @@
         "noImplicitAny": true
     },
     "files": [
-        "./src/angular2-datetime.module.ts"
+        "./src/angular-kalendar.module.ts"
     ],
     "angularCompilerOptions": {
 			"skipTemplateCodegen": true

@@ -5,11 +5,11 @@ import { DateFormatter } from './datepicker/utils/date-formatter';
 import { DateParser } from './datepicker/utils/date-parser';
 import { DateUtils } from './datepicker/utils/util';
 import { View } from './datepicker/view';
-import { DatepickerOptions, DEFAULT_OPTIONS } from './options';
+import { KalendarOptions, DEFAULT_OPTIONS } from './options';
 
 @Component({
     moduleId: module.id,
-    selector: 'date-time-picker',
+    selector: 'angular-kalendar',
     template: `
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
         <date-picker-days *ngSwitchCase="views.Calendar" 
@@ -92,21 +92,21 @@ import { DatepickerOptions, DEFAULT_OPTIONS } from './options';
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DatetimeComponent),
+            useExisting: forwardRef(() => AngularKalendarComponent),
             multi: true
         }
     ]
 })
-export class DatetimeComponent implements OnInit, ControlValueAccessor {
+export class AngularKalendarComponent implements OnInit, ControlValueAccessor {
     date: Date;
     displayDate: Date;
     view: View;
     views = View;
     @ViewChild('inputField') inputField: ElementRef;
 
-    _options: DatepickerOptions;
+    _options: KalendarOptions;
     @Input() set options(opt: any) {
-        this._options = <DatepickerOptions>{};
+        this._options = <KalendarOptions>{};
         Object.assign(this._options, DEFAULT_OPTIONS, opt);
     }
     get options() {

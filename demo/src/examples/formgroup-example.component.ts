@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     <div [style.height.rem]="6">
         FormGroup Demo<br>
         <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-            <date-time-picker [formControl]="formGroup.get('date')"></date-time-picker>
+            <angular-kalendar [formControl]="formGroup.get('date')"></angular-kalendar>
             <button type="submit">SUBMIT</button>
             <button type="button" (click)="reset()">Reset</button>
         </form>

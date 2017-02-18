@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     template: `
     <div [style.height.rem]="6">
         Basic Demo<br>
-        <date-time-picker></date-time-picker>
+        <angular-kalendar></angular-kalendar>
     </div>
     `
 })

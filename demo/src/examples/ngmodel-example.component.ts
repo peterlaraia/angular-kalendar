@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     template: `
     <div [style.height.rem]="6">
         NgModel Example<br>
-        <date-time-picker [(ngModel)]="myDate" (ngModelChange)="onModelChanges()"></date-time-picker>
+        <angular-kalendar [(ngModel)]="myDate" (ngModelChange)="onModelChanges()"></angular-kalendar>
     </div>
     `
 })

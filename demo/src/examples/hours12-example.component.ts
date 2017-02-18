@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     template: `
     <div [style.height.rem]="6">
         12-Hour Demo<br>
-        <date-time-picker [options]="options"></date-time-picker>
+        <angular-kalendar [options]="options"></angular-kalendar>
     </div>
     `
 })

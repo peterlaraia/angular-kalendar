@@ -8,10 +8,10 @@ import { FormGroupComponent } from './examples/formgroup-example.component';
 import { Hours12Component } from './examples/hours12-example.component';
 import { NgModelComponent } from './examples/ngmodel-example.component';
 
-const Angular2DatetimeModule = require('angular2-datetime').Angular2DatetimeModule;
+const AngularKalendarModule = require('angular-kalendar').AngularKalendarModule;
 
 @NgModule({
-    imports: [Angular2DatetimeModule, BrowserModule, FormsModule, ReactiveFormsModule],
+    imports: [AngularKalendarModule, BrowserModule, FormsModule, ReactiveFormsModule],
     exports: [],
     declarations: [AppComponent, BasicComponent, FormGroupComponent, Hours12Component, NgModelComponent],
     bootstrap: [AppComponent],

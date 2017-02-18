@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { DatepickerOptions } from './../options';
+import { KalendarOptions } from './../options';
 import { CalendarDisplay } from './utils/calendar-display';
 import { DateFormatter } from './utils/date-formatter';
 import { DateUtils } from './utils/util';
@@ -96,7 +96,7 @@ export class DatePickerDaysComponent implements OnInit {
   MONTHS = CalendarDisplay.MONTHS;
 
   @Input() date: Date;
-  @Input() options: DatepickerOptions; 
+  @Input() options: KalendarOptions; 
   @Output() dateChange = new EventEmitter();
   @Output() viewChange: EventEmitter<View> = new EventEmitter();
 
