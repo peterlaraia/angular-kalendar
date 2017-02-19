@@ -5,7 +5,6 @@
     "curly": false,
     "eofline": true,
     "indent": [true, "spaces"],
-    "max-line-length": [true, 140],
     "member-ordering": [true,
       "public-before-private",
       "static-before-instance",

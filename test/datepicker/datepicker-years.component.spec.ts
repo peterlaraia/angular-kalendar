@@ -49,11 +49,11 @@ describe('DatePicker Years Component', () => {
     });
 
     it('should emit view change event', () => {
-        comp.viewChange.subscribe((view: View) => expect(view).to.eq(View.Decades))
+        comp.viewChange.subscribe((view: View) => expect(view).to.eq(View.Decades));
         comp.displayDate = new Date('2012-10-13T12:00');
         comp.ngOnInit();
-        comp.onViewHigher({stopPropagation: (): any => undefined})
-    })
+        comp.onViewHigher({stopPropagation: (): any => undefined});
+    });
 
 
     it('should create decade view on init', () => {

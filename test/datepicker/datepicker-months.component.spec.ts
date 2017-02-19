@@ -16,7 +16,7 @@ describe('DatePicker Months Component', () => {
     it('should create months view on init', () => {
         comp.displayDate = new Date('2012-10-13T12:00');
         expect(comp.months).to.deep.equal([
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ]);
     });
 
@@ -42,9 +42,9 @@ describe('DatePicker Months Component', () => {
     });
 
     it('should emit view change event', () => {
-        comp.viewChange.subscribe((view: View) => expect(view).to.eq(View.Years))
+        comp.viewChange.subscribe((view: View) => expect(view).to.eq(View.Years));
         comp.displayDate = new Date('2012-10-13T12:00');
-        comp.onViewHigher({stopPropagation: (): any => undefined})
-    })
+        comp.onViewHigher({stopPropagation: (): any => undefined});
+    });
 
 });

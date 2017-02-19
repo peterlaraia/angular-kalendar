@@ -63,7 +63,7 @@ export class DatePickerYearsComponent implements OnInit {
     }
 
     updateYear(year: number, e: any) {
-        this.displayDate.setFullYear(this.centuryView && (this.displayDate.getFullYear() - this.displayDate.getFullYear() % 10) == year ? this.displayDate.getFullYear() : year);
+        this.displayDate.setFullYear(this.centuryView && (this.displayDate.getFullYear() - this.displayDate.getFullYear() % 10) === year ? this.displayDate.getFullYear() : year);
         e.stopPropagation();
         this.viewChange.emit(this.centuryView ? View.Years : View.Months);
     }

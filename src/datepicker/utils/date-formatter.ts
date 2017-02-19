@@ -14,7 +14,7 @@ export class DateFormatter {
         'H': (date: Date, modifier?: boolean) => `${modifier ? DateUtils.hoursTo12(date.getHours())[0] : date.getHours()}`,
         'HH': (date: Date, modifier?: boolean) => {
             let hours: number = modifier ? DateUtils.hoursTo12(date.getHours())[0] : date.getHours();
-            return `${hours < 10 ? 0 : ''}${hours}`
+            return `${hours < 10 ? 0 : ''}${hours}`;
         },
         'MM': (date: Date, modifier?: boolean) => `${date.getMinutes() < 10 ? 0 : ''}${date.getMinutes()}`
     };
@@ -37,7 +37,7 @@ export class DateFormatter {
         }
         formattedDate += DateFormatter.formatMap[pattern] ? DateFormatter.formatMap[pattern](date) : pattern;
         if (!hr24) {
-            formattedDate += ` ${DateUtils.hoursTo12(date.getHours())[1]}`
+            formattedDate += ` ${DateUtils.hoursTo12(date.getHours())[1]}`;
         }
         return formattedDate;
     }

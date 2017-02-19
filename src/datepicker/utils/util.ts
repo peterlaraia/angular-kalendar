@@ -52,7 +52,7 @@ export class DateUtils {
     if (hours === 0) {
       return [12, 'AM'];
     }
-    return [hours > 12 ? hours - 12 : hours, hours >= 12 ? 'PM' : 'AM']
+    return [hours > 12 ? hours - 12 : hours, hours >= 12 ? 'PM' : 'AM'];
   }
 
   static isDate(obj: any): boolean {

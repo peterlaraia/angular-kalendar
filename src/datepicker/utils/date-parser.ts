@@ -5,7 +5,7 @@ export class DateParser {
         'y': (date: Date, year: number) => date.setFullYear(year < 100 ? year + 2000 : year), //user enters dd/mm/yy, default to 20yy
         'H': (date: Date, hour: number) => date.setHours(hour),
         'M': (date: Date, minute: number) => date.setMinutes(minute)
-    }
+    };
 
     static parseDate(dateStr: string, format: string): Date {
         let formats: string[] = DateParser.parseFormatToArray(format);
@@ -20,11 +20,13 @@ export class DateParser {
             if (formats[index] === 'H' && ampm) {
                 if (ampm === 'AM' && value === 12) {
                     value = 0;
-                } else if (ampm === 'PM' && value != 12) {
+                } else if (ampm === 'PM' && value !== 12) {
                     value += 12;
                 }
             }
-            DateParser.parseMap[formats[index]] ? DateParser.parseMap[formats[index]](date, value) : undefined;
+            if (DateParser.parseMap[formats[index]]) {
+                DateParser.parseMap[formats[index]](date, value);
+            }
         });
         return date;
     }
@@ -52,7 +54,7 @@ export class DateParser {
     private static parseIntsFromString(dateStr: string): any[] {
         let values: number[] = [];
         let ampm: string;
-        let regex: RegExp = /(\d+|pm|am)/gi
+        let regex: RegExp = /(\d+|pm|am)/gi;
         let match: any;
         while ((match = regex.exec(dateStr)) !== null) {
             if (match[0].toUpperCase() === 'PM' || match[0].toUpperCase() === 'AM') {

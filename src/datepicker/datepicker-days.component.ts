@@ -152,7 +152,7 @@ export class DatePickerDaysComponent implements OnInit {
   }
 
   formatTime(): string {
-    return DateFormatter.formatDate(this.date, 'H:MM', this.options.hours24)
+    return DateFormatter.formatDate(this.date, 'H:MM', this.options.hours24);
   }
 
   onViewHigher(e: any) {
