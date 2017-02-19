@@ -9,8 +9,9 @@
     "distclean": "rimraf dist",
     "transpile": "tsc -p tsconfig-esm.json",
     "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/angular-kalendar.umd.js -c -m -o dist/bundles/angular-kalendar.umd.min.js",
     "finish": "cp package.json dist && ngc && cp README.md dist",
-    "build": "npm run distclean && npm run transpile && npm run package && npm run finish",
+    "build": "npm run distclean && npm run transpile && npm run package && npm run minify && npm run finish",
     "build.demo": "rimraf demo/dist demo/angular-kalendar/* && tsc -p tsconfig-demo.json && cp dist/* demo/angular-kalendar -r"
   },
   "repository": {
