@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peterlaraia/angular2-datetime.git"
+    "url": "git+https://github.com/peterlaraia/angular-kalendar.git"
   },
   "keywords": [
     "angular2",
@@ -28,11 +28,13 @@
   "author": "Peter Laraia <PeterLaraiaGit@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/peterlaraia/angular2-datetime/issues"
+    "url": "https://github.com/peterlaraia/angular-kalendar/issues"
   },
-  "homepage": "https://github.com/peterlaraia/angular2-datetime#readme",
+  "homepage": "https://github.com/peterlaraia/angular-kalendar#readme",
   "peerDependencies": {
-    "@angular/core": ">=2.0.0"
+    "@angular/core": ">=2.0.0",
+    "@angular/common": ">=2.0.0",
+    "@angular/forms": ">=2.0.0"
   },
   "devDependencies": {
     "@angular/common": "^2.4.2",
