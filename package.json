@@ -7,8 +7,8 @@
     "test": "mocha --require ts-node/register test/**/*.spec.ts --recursive",
     "test:watch": "mocha -w --require ts-node/register test/**/*.spec.ts --recursive",
     "distclean": "rimraf dist",
-    "transpile": "tsc -p tsconfig.json",
-    "package": "rollup -c rollup.config.js dist/lib/angular-kalendar.module.js > dist/lib/angular-kalendar.bundle.js",
+    "transpile": "tsc -p tsconfig-esm.json",
+    "package": "rollup -c",
     "finish": "cp package.json dist && ngc && cp README.md dist",
     "build": "npm run distclean && npm run transpile && npm run package && npm run finish",
     "build.demo": "rimraf demo/dist demo/angular-kalendar/* && tsc -p tsconfig-demo.json && cp dist/* demo/angular-kalendar -r"
@@ -53,6 +53,7 @@
     "connect": "^3.6.0",
     "core-js": "^2.4.1",
     "lodash": "4.17.4",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     "reflect-metadata": "^0.1.9",
     "rimraf": "^2.5.4",
