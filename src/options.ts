@@ -1,7 +1,7 @@
 export interface KalendarOptions {
-    format: string,
-    hours24: boolean,
-    showTimepicker: boolean
+    format?: string,
+    hours24?: boolean,
+    showTimepicker?: boolean
 }
 
 export const DEFAULT_OPTIONS: KalendarOptions = {
