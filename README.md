@@ -1,4 +1,4 @@
-# Angular Kalendar
+# Angular (Angular 2) Kalendar
 ![Image](http://i.imgur.com/6Gzwryk.png)
 
 ## Getting Started
@@ -74,7 +74,7 @@ export class FormGroupComponent implements OnInit {
 }
 ```
 ## Calendar Options
-Angular Kalendar accepts an input element called 'options'
+Angular Kalendar accepts an input called 'options'
 ```
 <angular-kalendar [options]="myOptions"></angular-kalendar>
 ...
@@ -134,6 +134,7 @@ If false, don't
 
 ## CSS
 Don't like the way it looks? You can override the existing styles in the following manners
+
 ###### Inline Styles:
 ```
 @Component({
