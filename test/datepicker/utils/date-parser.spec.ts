@@ -1,7 +1,7 @@
 /// <reference path="../../../node_modules/@types/mocha/index.d.ts" /> 
 import { expect } from 'chai';
 
-import { DateParser } from './../../../src/datepicker/utils/date-parser';
+import { DateParser } from './../../../lib/datepicker/utils/date-parser';
 
 describe('Date Parser', () => {
     it('should parse yyyy-mm-dd H:MM', () => {

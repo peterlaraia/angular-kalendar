@@ -3,8 +3,8 @@
 
 import { expect } from 'chai';
 import 'reflect-metadata';
-import { DatePickerDaysComponent } from './../../src/datepicker/datepicker-days.component';
-import { View } from './../../src/datepicker/view';
+import { DatePickerDaysComponent } from './../../lib/datepicker/datepicker-days.component';
+import { View } from './../../lib/datepicker/view';
 
 describe('DatePicker Days Component', () => {
     let comp: DatePickerDaysComponent;

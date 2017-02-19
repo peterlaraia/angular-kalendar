@@ -8,7 +8,7 @@
     "test:watch": "mocha -w --require ts-node/register test/**/*.spec.ts --recursive",
     "distclean": "rimraf dist",
     "transpile": "tsc -p tsconfig.json",
-    "package": "rollup -c rollup.config.js dist/angular-kalendar.module.js > dist/angular-kalendar.bundle.js",
+    "package": "rollup -c rollup.config.js dist/lib/angular-kalendar.module.js > dist/lib/angular-kalendar.bundle.js",
     "finish": "cp package.json dist && ngc && cp README.md dist",
     "build": "npm run distclean && npm run transpile && npm run package && npm run finish",
     "build.demo": "rimraf demo/dist demo/angular-kalendar/* && tsc -p tsconfig-demo.json && cp dist/* demo/angular-kalendar -r"

@@ -1,7 +1,7 @@
 /// <reference path="../../../node_modules/@types/mocha/index.d.ts" /> 
 import { expect } from 'chai';
 
-import { DateFormatter } from '../../../src/datepicker/utils/date-formatter';
+import { DateFormatter } from '../../../lib/datepicker/utils/date-formatter';
 
 describe('Date Formatter', () => {
     it('should format m/d/yyyy', () => {

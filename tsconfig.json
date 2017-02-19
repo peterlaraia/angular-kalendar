@@ -14,7 +14,7 @@
         "noImplicitAny": true
     },
     "files": [
-        "./src/index.ts"
+        "./index.ts"
     ],
     "angularCompilerOptions": {
 			"skipTemplateCodegen": true

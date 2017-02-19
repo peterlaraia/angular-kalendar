@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { DateUtils } from './../../../src/datepicker/utils/util';
+import { DateUtils } from './../../../lib/datepicker/utils/util';
 
 describe('Date Utils Year Display Builder', () => {
     it('should build decade 2010-2019', () => {
