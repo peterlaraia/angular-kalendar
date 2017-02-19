@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
         /deep/ .kalendar .ang2cal-btn:hover {
             background-color: blue;
             color: white;
-            border-radius: none;
+            border-radius: 0;
         }
     `]
 })
