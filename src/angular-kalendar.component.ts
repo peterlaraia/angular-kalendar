@@ -11,22 +11,26 @@ import { KalendarOptions, DEFAULT_OPTIONS } from './options';
     selector: 'angular-kalendar',
     template: `
     <div class="ang2cal-datepicker" *ngIf="view" [ngSwitch]="view">
-        <date-picker-days *ngSwitchCase="views.Calendar" 
+        <date-picker-days *ngSwitchCase="views.Calendar"
+        class="ang2cal-days" 
         [(displayDate)]="displayDate" 
         [date]="date" 
         [options]="options"
         (dateChange)="onDateChange($event)" 
         (viewChange)="updateView($event)"></date-picker-days>
 
-        <date-picker-months *ngSwitchCase="views.Months" 
+        <date-picker-months *ngSwitchCase="views.Months"
+        class="ang2cal-months"
         [(displayDate)]="displayDate" 
         (viewChange)="updateView($event)"></date-picker-months>
 
-        <date-picker-years *ngSwitchCase="views.Years"   
+        <date-picker-years *ngSwitchCase="views.Years"
+        class="ang2cal-years"
         [(displayDate)]="displayDate" 
         (viewChange)="updateView($event)"></date-picker-years>
 
-        <date-picker-years *ngSwitchCase="views.Decades" 
+        <date-picker-years *ngSwitchCase="views.Decades"
+        class="ang2cal-decades"
         [(displayDate)]="displayDate" 
         (viewChange)="updateView($event)" 
         [centuryView]="true"></date-picker-years>

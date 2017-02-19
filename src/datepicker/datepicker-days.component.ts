@@ -21,7 +21,7 @@ import { View } from './view';
         <col style="width: 2rem">
       </colgroup>
       <thead>
-        <tr class="calendar-header" [style.height.rem]="2">
+        <tr class="ang2cal-header" [style.height.rem]="2">
           <th class="ang2cal-prev-btn ang2cal-btn" (click)="prevMonth()"></th>
           <th colspan="5" class="ang2cal-selectable" (click)="onViewHigher($event)">
             <div>{{MONTHS[displayDate?.getMonth()]}} {{displayDate?.getFullYear()}}</div>
