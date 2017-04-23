@@ -9,6 +9,7 @@
   "types": "angular-kalendar.d.ts",
   "scripts": {
     "precommit": "npm run lint",
+    "prepush": "npm run test",
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "lint:fix": "tslint src/**/*.ts test/**/*.ts --fix",
     "build.test": "rimraf dist coverage && tsc -p tsconfig-test.json",
