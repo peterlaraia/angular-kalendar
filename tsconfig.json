@@ -9,7 +9,8 @@
             "./node_modules"
         ],
         "types": [
-            "node"
+            "node",
+            "jasmine"
         ],
         "noUnusedLocals": true,
         "noUnusedParameters": true
