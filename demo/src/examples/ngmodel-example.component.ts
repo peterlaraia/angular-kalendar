@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'ngmodel-example',
     template: `
     <div [style.height.rem]="6">

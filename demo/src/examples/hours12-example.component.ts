@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'hours12-example',
     template: `
     <div [style.height.rem]="6">

@@ -11,24 +11,6 @@
   <script src="vendor/index.js"></script>
   <script src="vendor/shim.min.js"></script>
   <script src="vendor/zone.min.js"></script>
-  <script src="vendor/system.src.js"></script>
-  <script>
-    System.config({
-      base: 'angular-kalendar',
-      defaultJSExtensions: true,
-      paths: {
-        '@angular/common': 'vendor/common.umd.js',
-        '@angular/compiler': 'vendor/compiler.umd.js',
-        '@angular/core': 'vendor/core.umd.js',
-        '@angular/forms': 'vendor/forms.umd.js',
-        '@angular/platform-browser': 'vendor/platform-browser.umd.js',
-        '@angular/platform-browser-dynamic': 'vendor/platform-browser-dynamic.umd.js',
-        'rxjs/*': 'vendor/rxjs/*',
-        'angular-kalendar': 'angular-kalendar/bundles/angular-kalendar.umd.js',
-        '*': 'dist/*'
-      }
-    });
-    System.import('main.js');
-  </script>
+  <script src="main.bundle.js"></script>
 </body>
 </html>

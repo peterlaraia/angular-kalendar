@@ -32,7 +32,8 @@
     "build": "npm run build:es6 && npm run build:es5 && npm run build:umd",
     "postbuild": "ts-node tools/utils/post-build.ts",
     "prebuild.demo": "ts-node tools/utils/build-demo.ts",
-    "build.demo": "rimraf demo/dist && tsc -p tsconfig-demo.json",
+    "build.demo": "rimraf demo/dist && tsc -p tsconfig-demo.json && rollup -c tools/config/rollup/rollup.demo.config.js",
+    "postbuild.demo": "uglifyjs demo/main.bundle.js --screw-ie8 -c -m -o demo/main.bundle.min.js",
     "serve.demo": "node tools/servers/demo.js",
     "predemo": "npm run build.demo",
     "demo": "npm run serve.demo"
@@ -92,6 +93,8 @@
     "reflect-metadata": "^0.1.10",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve-angular": "^2.0.3",
     "rxjs": "^5.3.0",
     "systemjs": "^0.20.12",
     "ts-helpers": "^1.1.2",

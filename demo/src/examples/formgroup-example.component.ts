@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
-    moduleId: module.id,
     selector: 'formgroup-example',
     template: `
     <div [style.height.rem]="6">

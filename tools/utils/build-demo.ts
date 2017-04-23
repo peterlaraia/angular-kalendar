@@ -14,7 +14,7 @@ const vendorFiles = [
     './node_modules/systemjs/dist/system.src.js',
     './node_modules/zone.js/dist/zone.min.js',
     './node_modules/core-js/client/shim.min.js',
-    './node_modules/rxjs',
+    './node_modules/rxjs/bundles/Rx.js',
     './node_modules/ts-helpers/index.js',
     './node_modules/tslib/tslib.js'
 ];

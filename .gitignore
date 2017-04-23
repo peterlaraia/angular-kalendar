@@ -3,6 +3,8 @@ logs
 
 coverage
 
+demo/main.bundle.*
+
 node_modules
 angular-kalendar
 vendor

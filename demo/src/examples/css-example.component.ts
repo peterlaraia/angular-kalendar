@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'css-example',
     template: `
     <div [style.height.rem]="6">

@@ -9,7 +9,7 @@ import { FormGroupComponent } from './examples/formgroup-example.component';
 import { Hours12Component } from './examples/hours12-example.component';
 import { NgModelComponent } from './examples/ngmodel-example.component';
 
-const AngularKalendarModule = require('angular-kalendar').AngularKalendarModule;
+import { AngularKalendarModule } from './../../lib/angular-kalendar.module';
 
 @NgModule({
     imports: [AngularKalendarModule, BrowserModule, FormsModule, ReactiveFormsModule],
