@@ -10,4 +10,5 @@ server.js
 
 typings
 dist
+build
 .vscode

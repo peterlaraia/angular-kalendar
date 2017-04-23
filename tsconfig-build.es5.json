@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig-build.json",
+    "compilerOptions": {
+        "target": "es5"
+    },
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true,
+        "flatModuleOutFile": "angular-kalendar.js",
+        "flatModuleId": "angular-kalendar"
+    }
+}

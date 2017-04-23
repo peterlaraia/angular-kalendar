@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     </div>
     `,
     styles: [`
-        /deep/ .kalendar .ang2cal-btn:hover {
+        :host /deep/ .kalendar .ang2cal-btn:hover {
             background-color: blue;
             color: white;
             border-radius: 0;

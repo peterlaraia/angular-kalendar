@@ -1,5 +1,5 @@
 export default {
-    entry: './dist/index.js',
+    entry: './build/index.js',
     dest: './dist/bundles/angular-kalendar.umd.js',
     format: 'umd',
     moduleName: 'angular-kalendar',

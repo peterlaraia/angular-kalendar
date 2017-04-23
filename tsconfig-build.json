@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "es2015",
+        "baseUrl": ".",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "stripInternal": true,
+        "declaration": true,
+        "outDir": "./build",
+        "lib": ["es2015", "dom"],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+            "node"
+        ],
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "files": [
+        "./index.ts"
+    ],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true,
+        "flatModuleOutFile": "angular-kalendar.js",
+        "flatModuleId": "angular-kalendar"
+    }
+}

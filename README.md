@@ -143,7 +143,7 @@ Don't like the way it looks? You can override the existing styles in the followi
     <angular-kalendar class="kalendar"></angular-kalendar>
     `,
     styles: [`
-        /deep/ .kalendar .ang2cal-btn:hover {
+        :host /deep/ .kalendar .ang2cal-btn:hover {
             background-color: blue;
             color: white;
             border-radius: 0;
